@@ -4,6 +4,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.miguel.backend.model.Task;
 import com.miguel.backend.repository.TaskRepository;
@@ -27,6 +28,11 @@ public class BackendApplication {
 			task.setDeadline("2022-01-01");
 
 			taskRepository.save(task);
-		};	
+		};
+	}
+
+	@Bean
+	public BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder(); 
 	}
 }
